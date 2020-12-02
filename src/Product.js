@@ -3,7 +3,6 @@ import './Product.scss';
 import StarIcon from '@material-ui/icons/Star';
 
 function Product({ title, image, price, rating }) {
-    console.log(rating);
     return (
         <div className="product">
             <div className="product__info">
