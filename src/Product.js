@@ -4,7 +4,8 @@ import StarIcon from '@material-ui/icons/Star';
 import { useStateValue } from './StateProvider';
 
 function Product({ id, title, image, price, rating }) {
-    const [{basket}, dispatch] = useStateValue();
+    // eslint-disable-next-line
+    const [{}, dispatch] = useStateValue();
 
     const addToBasket = () => {
         // send the product to the data layer
