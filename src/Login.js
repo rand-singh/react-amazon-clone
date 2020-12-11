@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import './Login.scss'
+import { Link, useHistory } from 'react-router-dom'
+import './Login.scss';
+import { auth } from './firebase';
 
 function Login() {
+    const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -10,12 +12,27 @@ function Login() {
         e.preventDefault();
 
         // firebase login auth here
+        auth
+            .signInWithEmailAndPassword(email,password)
+            .then(auth => {
+                history.push('/')
+            })
+            .catch(error => console.warn(error.message))
     }
 
     const register = e => {
         e.preventDefault();
-
+        
         // firebase register here
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then((auth) => {
+                console.log('Successfully created new user ', {auth});
+                if (auth) {
+                    history.push('/')
+                }
+            })
+            .catch(error => console.warn(error.message))
     }
 
     return (
@@ -31,7 +48,7 @@ function Login() {
                     <input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
                     
                     <h5>Password</h5>
-                    <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+                    <input type="password" autoComplete="off" value={password} onChange={e => setPassword(e.target.value)}/>
 
                     <button type="submit" onClick={signIn} className="login__signInButton">Sign In</button>
 
