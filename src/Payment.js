@@ -9,7 +9,7 @@ import { getBasketTotal } from './reducer';
 import axios from './axios';
 
 function Payment() {
-    const [{ basket, user }] = useStateValue();
+    const [{ basket, user }, dispatch] = useStateValue();
 
     const history = useHistory();
 
@@ -61,7 +61,7 @@ function Payment() {
             setError(null);
             setProcessing(false);
 
-            dispatchEvent({
+            dispatch({
                 type: 'EMPTY_BASKET'
             })
 
