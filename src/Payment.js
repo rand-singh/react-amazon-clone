@@ -42,7 +42,9 @@ function Payment() {
         return () => {
             // cleanup
         }
-    }, [basket])
+    }, [basket]);
+
+    console.log({clientSecret});
 
     const handleSubmit = async (e) => {
         // stripe submission handled here
@@ -60,7 +62,7 @@ function Payment() {
             setProcessing(false);
 
             // using replace will prevent the user from coming back to this page 
-            history.replace('/orders')
+            history.replace('/orders');
         })
     }
 
