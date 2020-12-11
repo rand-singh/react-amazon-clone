@@ -39,5 +39,10 @@
     margin-top: 10px;
     color: #111;
     padding: 6px 8px;
+    cursor: pointer;
+
+    &:hover {
+      background: #e0b240;
+    }
   }
 }
