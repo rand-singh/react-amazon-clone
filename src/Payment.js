@@ -61,6 +61,10 @@ function Payment() {
             setError(null);
             setProcessing(false);
 
+            dispatchEvent({
+                type: 'EMPTY_BASKET'
+            })
+
             // using replace will prevent the user from coming back to this page 
             history.replace('/orders');
         })
